@@ -67,10 +67,11 @@ matrix * fill_matrix (matrix *m, double num){
 
 	
 void print_matrix (matrix *m){
-	if (m == NULL){
-		printf("ERROR: Couldn't print matrix, NULL"); // use errno
-	}
-		
+
+	assert ( (m == NULL) == 0);	
+
+	printf("rows: %d\ncols: %d\n", m->rows, m->cols); 
+	
 	for (size_t i = 0; i < m->rows; i++){
 		for (size_t j = 0; j < m->cols; j++){
 			printf("%1.3f ", m->entries[i][j]); 
