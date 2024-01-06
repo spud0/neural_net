@@ -5,13 +5,8 @@
 #include "matrix_ops.h"
 
 
-bool verify_dimensions(matrix *m_one, matrix *m_two){
-	if ((m_one->rows == m_two->rows) && (m_one->cols == m_two->cols)) {
-		return true; 
-	} else {
-		return false; 
-	}
-
+inline bool verify_dimensions(matrix *m_one, matrix *m_two){
+	return ((m_one->rows == m_two->rows) && (m_one->cols == m_two->cols)); 
 }
 
 
