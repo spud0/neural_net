@@ -13,7 +13,6 @@ matrix * init_matrix (int rows, int cols){
 
 	// Space for the matrix
 	matrix *res = (matrix *) malloc(sizeof(matrix)); 
-
 	
 	// Space for the rows and cols
 	res->entries = (double **) malloc(rows * sizeof(double*)); 
@@ -32,15 +31,26 @@ matrix * init_matrix (int rows, int cols){
 }
 
 void print_matrix(matrix *m){
-
+	if (m == NULL){
+		printf("ERROR: Couldn't print matrix, NULL"); 
+	}
+		
+	for (size_t i = 0; i < m->rows; i++){
+		for (size_t j = 0; j < m->cols; j++){
+			printf("%2.0f", m->entries[i][j]); 
+		}
+		printf("\n"); 
+	}
+	
 }
 
 
 int main(){
 	matrix *m = init_matrix(5, 6); 
 
-	printf("rows: %d\n cols: %d\n", m->rows, m->cols); 
-
+	printf("rows: %d\ncols: %d\n", m->rows, m->cols); 
+	print_matrix(m); 
+	
 	return 0; 
 
 }
