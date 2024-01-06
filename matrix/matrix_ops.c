@@ -2,11 +2,14 @@
 #include <assert.h> 
 #include <stdlib.h> 
 
+#include "matrix.h"
 #include "matrix_ops.h"
 
-
 inline bool verify_dimensions(matrix *m_one, matrix *m_two){
-	return ((m_one->rows == m_two->rows) && (m_one->cols == m_two->cols)); 
+	return (
+		 	(m_one->rows == m_two->rows)
+		 	&& (m_one->cols == m_two->cols)
+		   ); 
 }
 
 
@@ -36,11 +39,9 @@ matrix * add (matrix *m_one, matrix *m_two){
 matrix * subtract (matrix *m_one, matrix *m_two){
 
 	// Matrices aren't NULL
-
 	assert( (verify_dimensions(m_one, m_two) == false) == 0); 
 
-	// Have the same rows and columns
-	
+	// Have the same rows and columns	
 	matrix *res = init_matrix(m_one->rows, m_one->cols); 
 
 	for (size_t i = 0; i < m_one->rows; i++){
