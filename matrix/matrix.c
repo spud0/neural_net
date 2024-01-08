@@ -2,8 +2,6 @@
 #include <assert.h> 
 #include <stdlib.h> 
 
-#include <stdio.h> 
-
 #include "matrix.h"
 #include "matrix_ops.h"
 
@@ -31,31 +29,11 @@ matrix * init_matrix (int rows, int cols){
 
 }
 
-// matrix * flatten_matrix (matrix *m, ...) {}
-
-// Copy matrix into another one
-matrix * copy_matrix (matrix *m){
-
-	assert( (m == NULL) == 0 ); 
-	
-	matrix * res = init_matrix(m->rows, m->cols);
-
-	for (size_t i = 0; i < m->rows; i++){
-		for (size_t j = 0; j < m->cols; j++){
-				res->entries[i][j] = m->entries[i][j]; 
-		}
-	}
-
-	return res; 	
-}
-
-
 matrix * fill_matrix (matrix *m, double num){
 	
 	assert( (m == NULL) == 0 ); 
 
-	matrix *res = init_matrix(m->rows, m->cols); 
-	
+	matrix *res = init_matrix(m->rows, m->cols); 	
 	for (size_t i = 0; i < m->rows; i++){
 		for (size_t j = 0; j < m->cols; j++){
 				res->entries[i][j] = num; 
@@ -65,23 +43,66 @@ matrix * fill_matrix (matrix *m, double num){
 	return res;
 }
 
+matrix * copy_matrix (matrix *m){
+
+	assert( (m == NULL) == 0 ); 
 	
+	matrix * res = init_matrix(m->rows, m->cols);
+	for (size_t i = 0; i < m->rows; i++){
+		for (size_t j = 0; j < m->cols; j++){
+				res->entries[i][j] = m->entries[i][j]; 
+		}
+	}
+
+	return res; 	
+}
+	
+// matrix * flatten_matrix (matrix *m, ...) {}
+
+double uniform_distrib (double min, double max) {
+	double diff = max - man; 
+	size_t scale = 10000; 
+	size_t scaled_diff = (size_t) (diff * scale); 
+	return min + ( (rand() % scaled_diff ) / scale); 
+}
+
+void randomize_matrix (matrix *m, int n){
+	
+	assert ( (m == NULL) == 0); 
+
+	double min = -5.0 / sqrt(n); 
+	double max =  5.0 / sqrt(n);   
+	for (size_t i = 0; i < m->rows; i++){
+		for (size_t j = 0; j < m->cols; j++) {
+			m->entries[i][j] = uniform_distrib(min, max); 
+		}
+	}
+}
+
+	
+void free_matrix(matrix *m) {
+	
+	assert( (m == NULL) == 0); 
+	for (size_t i = 0; i < m->rows; i++){
+		free(m->entries[i]); 
+	}
+	free(m->entries); 
+	free(m); 
+	m = NULL; 
+}
+
 void print_matrix (matrix *m){
 
 	assert ( (m == NULL) == 0);	
 
-	printf("rows: %d\ncols: %d\n", m->rows, m->cols); 
+	printf("Rows: %d\nCols: %d\n", m->rows, m->cols); 
 	
 	for (size_t i = 0; i < m->rows; i++){
 		for (size_t j = 0; j < m->cols; j++){
-			printf("%1.3f ", m->entries[i][j]); 
+			printf("%1.5f ", m->entries[i][j]); 
 		}
 		printf("\n"); 
 	}
 	
 }
-
-// void free_matrix(matrix *m) {}
-// void randomize_matrix (matrix *m, int n){} 
-
 
