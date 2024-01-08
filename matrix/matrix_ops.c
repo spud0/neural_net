@@ -93,7 +93,7 @@ matrix * multiply (matrix *m_one, matrix *m_two){
 
 	assert( (verify_dimensions(m_one, m_two)) == 0); 	
 	
-	matrix *res = init_matrix(m->cols, m->rows); 
+	matrix *res = init_matrix(m_one->cols, m_one->rows); 
 	
 	for (size_t i = 0; i < res->rows; i++){
 		for (size_t j = 0; j < res->cols; j++) {
