@@ -60,6 +60,8 @@ matrix * transpose (matrix *m){
 	for (size_t i = 0; i < res->rows; i++){
 		for (size_t j = 0; j < res->cols; j++) {
 			res->entries[i][j] = m->entries[j][i];
+		}	
+	}
 
 	return res; 
 
