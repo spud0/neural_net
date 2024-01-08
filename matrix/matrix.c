@@ -1,6 +1,7 @@
 #include <math.h> 
 #include <assert.h> 
-#include <stdlib.h> 
+#include <stdlib.h>
+#include <stdio.h> 
 
 #include "matrix.h"
 #include "matrix_ops.h"
@@ -60,7 +61,7 @@ matrix * copy_matrix (matrix *m){
 // matrix * flatten_matrix (matrix *m, ...) {}
 
 double uniform_distrib (double min, double max) {
-	double diff = max - man; 
+	double diff = max - min; 
 	size_t scale = 10000; 
 	size_t scaled_diff = (size_t) (diff * scale); 
 	return min + ( (rand() % scaled_diff ) / scale); 
