@@ -15,9 +15,9 @@ matrix * init_matrix (int rows, int cols){
 	matrix *res = (matrix *) malloc(sizeof(matrix)); 
 	
 	// Space for the rows and cols
-	res->entries = (double **) malloc(rows * sizeof(double*)); 
+	res->entries = (double **) malloc( (rows) * sizeof(double*)); 
 	for (size_t i = 0; i < rows; i++){
-		res->entries[i] = (double *) malloc(cols * sizeof(double)); 
+		res->entries[i] = (double *) malloc( (cols) * sizeof(double)); 
 		for (size_t j = 0; j < cols; j++) {
 			// Set everything to zeroes
 			res->entries[i][j] = 0.0; 
@@ -34,14 +34,13 @@ matrix * fill_matrix (matrix *m, double num){
 	
 	assert( (m == NULL) == 0 ); 
 
-	matrix *res = init_matrix(m->rows, m->cols); 	
 	for (size_t i = 0; i < m->rows; i++){
 		for (size_t j = 0; j < m->cols; j++){
-				res->entries[i][j] = num; 
+				m->entries[i][j] = num; 
 		}
 	}
 
-	return res;
+	return m;
 }
 
 matrix * copy_matrix (matrix *m){
@@ -89,7 +88,7 @@ void free_matrix(matrix *m) {
 	}
 	free(m->entries); 
 	free(m); 
-	m = NULL; 
+	// m = NULL; 
 }
 
 void print_matrix (matrix *m){
