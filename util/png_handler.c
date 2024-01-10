@@ -15,13 +15,13 @@ int get_label_from_dir(const char *dir_name ) {
 }
 
 void print_png (png_matrix* p){ 
-	static_assert (p == NULL); 
+	assert(p == NULL);
 	printf("Label for png file: %zu\n", p->png_label); 
 	print_matrix (p->png_data); 
 }
 	
 void free_png_matrix (png_matrix *p) {
-	static_assert(p == NULL); 
+	assert(p == NULL); 
 	free_matrix(p->png_data); 
 	free(p); 
 	p = NULL;
