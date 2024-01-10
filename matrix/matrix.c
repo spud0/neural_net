@@ -57,7 +57,30 @@ matrix * copy_matrix (matrix *m){
 	return res; 	
 }
 	
-// matrix * flatten_matrix (matrix *m, ...) {}
+matrix * flatten_matrix (matrix *m, int axis) {
+
+	matrix *v; 
+
+	if (axis == 0) {
+		v = init_matrix(m->rows * m->cols, 1); 
+	} else if (axis == 1) {
+		v = init_matrix (1, m->rows * m->cols); 
+	} else {
+		assert (0); 
+	}
+
+	for (size_t i = 0; i < m->rows; i++) {
+		for (size_t j = 0; j < m->cols; j++) {
+			if (axis == 0) {
+				v->entries[i * m->cols + j][0] = m->entries[i][j]; 
+			} else {
+				v->entries[0][i * m->cols + j] = m->entries[i][j]; 				
+			}
+		}
+	}
+
+	return v; 
+}
 
 double uniform_distrib (double min, double max) {
 	double diff = max - min; 
