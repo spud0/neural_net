@@ -8,10 +8,9 @@ typedef struct {
 	size_t png_label;
 } png_matrix; 
 
-int get_label_from_dir(... ); 
 
+int get_label_from_dir (const char *dir_name); 
 png_matrix * load_png_to_matrix (char *file_path); 
-
 void print_png (png* p); 
 void free_png_matrix (png *p); 
 
