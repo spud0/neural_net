@@ -5,13 +5,37 @@
 
 #include "png_handler.h"
 
+// Unsure about approach
+int get_label_from_dir(const char *dir_name ) {
+	int idx = -1; 
 
-void print_png (png* p); 
+	if (sscanf(dir_name, "%d/", &idx) == 1) {
+		return idx; 
+	}
+
+	return idx; 
+}
+
+
+void print_png (png_matrix* p){ 
+	assert (p == NULL); 
+	printf("Label for png file: %d\n", p->png_label); 
+	print_matrix (p->png_data); 
+
+}
+
+	
 void free_png_matrix (png_matrix *p) {
 	free_matrix(p->png_data); 
 	free(p); 
 	p = NULL;
 }
+
+
+// Helper functions
+
+
+
 
 png_matrix * load_png_to_matrix (char *file_path) {
 
