@@ -12,7 +12,7 @@ typedef struct matrix {
 matrix * init_matrix (int rows, int cols); 
 matrix * fill_matrix (matrix *m, double num);
 matrix * copy_matrix (matrix *m);
-matrix * flatten_matrix (matrix *m, ...); 
+matrix * flatten_matrix (matrix *m, int axis);
 
 void print_matrix (matrix *m); 
 void free_matrix (matrix *m);
