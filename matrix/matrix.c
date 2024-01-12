@@ -129,3 +129,18 @@ void print_matrix (matrix *m){
 	
 }
 
+
+// Take in a vector (1D Matrix)
+int max_idx_matrix(matrix *v) {
+	double max = 0; 
+	int max_idx = 0; 
+	
+	for (size_t i = 0; i < v->rows; i++) {
+		if (v->entries[i][0] > max) {
+			max = v->entries[i][0]; 
+			max_idx = i; 
+		}
+
+	}
+	return max_idx; 
+}

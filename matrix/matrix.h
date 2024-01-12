@@ -18,5 +18,5 @@ void print_matrix (matrix *m);
 void free_matrix (matrix *m);
 void randomize_matrix (matrix *m, int n);  
 
-int max_matrix(matrix *v); 
+int max_idx_matrix(matrix *v); 
 #endif // matrix.h
