@@ -22,5 +22,18 @@ matrix *derivative_sigmoid (matrix *m) {
 }
 
 
+matrix *softmax (matrix *m) {
+	double total = 0;
+	for (size_t i = 0; i < m->rows; i++){
+		for (size_t j = 0; j < m->cols; j++){
+			total += exp(m->entries[i][j]); 
+		}
+	}
 
-matrix *softmax (matrix *m);
+	matrix * res = init_matrix(m->rows, m->cols); 
+	
+	// TODO: complete the rest of the implementation
+
+	return res; 		
+
+}
