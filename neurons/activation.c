@@ -2,11 +2,9 @@
 #include "activation.h"
 #include "../matrix/matrix_ops.h"
 
-
 double sigmoid (double input) {
 	return 1.0 / (1 + exp(-1 * input); 
 }
-
 
 matrix *derivative_sigmoid (matrix *m) {
 	// 
@@ -32,8 +30,11 @@ matrix *softmax (matrix *m) {
 
 	matrix * res = init_matrix(m->rows, m->cols); 
 	
-	// TODO: complete the rest of the implementation
-
+	for (size_t i = 0; i < res->rows; i++){
+		for (size_t j = 0; j < res->cols; j++){
+			res->entries[i][j] = exp(m->entries[i][j]) / total; 
+		}
+	}
 	return res; 		
 
 }
