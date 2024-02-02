@@ -2,7 +2,7 @@
 A Neural Network written in C. 
 
 ## How it Works: 
-A neuron is the simplest piece of a neural network. Add some of these neurons together with some weights and biases and I get a layer, add the layers and I get a network. ... something something ... ML
+A neuron is the simplest piece of a neural network. Add some of these neurons together with some weights and biases and I get a layer, add the layers and I get a network. ... something something ... ML ... I wrote this neural network for processing the MNIST dataset. 
 ## Run it! 
 ``` 
 ...
