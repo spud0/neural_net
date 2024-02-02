@@ -8,7 +8,7 @@ double sigmoid (double input) {
 
 matrix *derivative_sigmoid (matrix *m) {
 	// 
-	matrix * m_ones = init_matrix(m->rows, m->cols); 
+	matrix *m_ones = init_matrix(m->rows, m->cols); 
 	m_ones = matrix_fill(m_ones , 1); 
 
 	matrix *subtracted = subtract(m_ones, m); 
