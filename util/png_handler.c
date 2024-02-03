@@ -76,7 +76,9 @@ png_matrix * load_png_to_matrix (char *file_path) {
 			png_get_image_width(png, info), 
 			png_get_image_height(png, info)		
 	); 
+	
 
+	// Split the full file path by the '/' char and take the number part... 
 	//p->label = get_label_from_dir(...); 
 
 	return p; 
