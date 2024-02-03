@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <stdio.h>
-#include </opt/local/include/png.h>
+#include <png.h>
 
 #include "png_handler.h"
 
