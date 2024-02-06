@@ -5,3 +5,5 @@ CC = gcc
 CFLAGS = -I/opt/local/inlcude -L/opt/local/lib -w -lz -libpng
 
 DEPS = ../matrix/matrix.c 
+
+png: png_handler.c png_handler.h ../matrix/matrix.c 
