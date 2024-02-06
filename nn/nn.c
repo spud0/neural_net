@@ -22,6 +22,9 @@ nn * init_network(int input, int hidden, int output, double learning_rate){
 
 	matrix * hidden_layer = init_matrix(hidden, input); 
 	matrix * output_layer = init_matrix(output, hidden); 
+
+	randomize_matrix(hidden_layer, hidden); 
+	randomize_matrix(output_layer, output); 
 	
 	network->hidden_weights = hidden_layer; 
 	network->output_weights = output_layer; 
@@ -36,9 +39,11 @@ void print_network(nn * network){
 	printf("Number of inputs: %d\n", network->input); 	
 	printf("Number of outputs: %d\n", network->output); 
 	printf("The learning rate: %d\n", network->learning_rate); 
-	
+
 	// The weights	
+	printf("The hidden weights"); 	
 	print_matrix(network->hidden_weights); 
+	printf("The output weights"); 
 	print_matrix(network->output_weights); 
 }
 
