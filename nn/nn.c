@@ -2,12 +2,16 @@
 #include <stdlib.h>
 
 #include "nn.h"
+#include "activation.h"
 #include "../matrix/matrix_ops.h"
-#include "../neurons/activation.h"
 
 
 
 nn * init_network(int input, int hidden, int output, double learning_rate){
+
+	// For initializing the matrix, dont want 0 x 0 sized matrix	
+	assert(hidden == 0 && output == 0); 
+	assert(input == 0 && hidden == 0); 
 
 	nn * network = malloc(sizeof(nn)); 
 	
@@ -15,6 +19,12 @@ nn * init_network(int input, int hidden, int output, double learning_rate){
 	network->hidden = hidden;
 	network->output = output; 
 	network->learning_rate = learning_rate; 	
+
+	matrix * hidden_layer = init_matrix(hidden, input); 
+	matrix * output_layer = init_matrix(output, hidden); 
+	
+	network->hidden_weights = hidden_layer; 
+	network->output_weights = output_layer; 
 
 	return network; 
 }
