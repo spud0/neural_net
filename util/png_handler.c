@@ -56,10 +56,20 @@ png_structp open_png_file (FILE *file_ptr, png_infop *info) {
 	return png; 
 }
 
-// Allocate memory for row pointers png_bytep * allocate_row_pointers (size_t height, png_structp png, png_infop info) {}
+// Allocate memory for row pointers 
+png_bytep * allocate_row_pointers (int height, png_structp png, png_infop info) {
+
+	png_bytep * row_ptrs = 	malloc(height * sizeof(png_bytep)); 
+	for (size_t i = 0; i < height; i++){
+		row_ptrs[i] = malloc(png_get_rowbytes(png, info)); 
+	}	
+		
+	return row_ptrs; 
+}
 
 
-// Read image data into png_data field void populate_matrix_from_image(png_structp png, png_bytep *row_ptrs, png_matrix png_m) {}
+// Read image data into png_data field s
+void populate_matrix_from_image(png_structp png, png_bytep *row_ptrs, png_matrix png_m) {}
 
 
 /*
