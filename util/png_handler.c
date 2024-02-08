@@ -109,11 +109,13 @@ png_matrix * load_png_to_matrix (char *file_path) {
 
 void write_png_to_file(const char *file_path, png_matrix *p){
 
-	FILE * file_ptr = fopen(file_path, "wb"); 
+	FILE * file_ptr = fopen(file_path, "a"); 
 	
-	for (size_t i = 0; i < ; i++){
-		for (size_t j = 0; j < ...; j++) {
-			// TODO: Write the contents of a PNG file to a TXT as a Matrix 		
+	for (size_t i = 0; i < p->png_data->cols; i++){
+		for (size_t j = 0; j < p->png_data->rows; j++) {
+			fprintf(file_ptr, file_path); 
+			// TODO: Figure out if I want a string here
+			fprintf(file_ptr, ... );  
 		}
 	}
 
