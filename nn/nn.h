@@ -19,11 +19,14 @@ nn * init_network(int input, int hidden, int output, double learning_rate);
 nn * load_network(const char * file_path); 
 
 
+matrix * network_predict(nn * network, matrix * input_data); 
 matrix * 
-matrix * 
+
+double 
 
 void print_network(nn * network); 
 void free_network (nn * network); 
 void save_network (nn * network, const char * file_path); 
+void train_network(nn * network, matrix * input_data, matrix * output_data); 
 
 #endif // NN_H
