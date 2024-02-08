@@ -69,7 +69,19 @@ png_bytep * allocate_row_pointers (int height, png_structp png, png_infop info) 
 
 
 // Read image data into png_data field s
-void populate_matrix_from_image(png_structp png, png_bytep *row_ptrs, png_matrix png_m) {}
+void populate_matrix_from_image(png_structp png, png_bytep *row_ptrs, png_matrix *p) {
+	
+	int height = p->png_data->cols;
+	int width  = p->png_data->rows; 
+	
+	png_read_image(png, row_ptrs); 
+
+	for (size_t i = 0; i < height; i++) {
+		for (size_t j = 0; j < width; j++) {
+			p->png_data->entries[i][j] = row_ptrs[i][j]; 		
+		}
+	}
+}
 
 
 /*
