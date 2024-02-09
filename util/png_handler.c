@@ -83,7 +83,7 @@ void populate_matrix_from_image(png_structp png, png_bytep *row_ptrs, png_matrix
 	}
 }
 
-
+#if 0
 /*
 png_matrix * load_png_to_matrix (char *file_path) {
 
@@ -121,7 +121,7 @@ void write_png_to_file(const char *file_path, png_matrix *p){
 
 
 }
-
+#endif
 
 
 int main (void) {
