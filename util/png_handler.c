@@ -23,7 +23,7 @@ void print_png (png_matrix* p){
 	
 void free_png_matrix (png_matrix *p) {
 	assert( (p == NULL) == 0); 
-	free_matrix(p->png_data); 
+	free_matrix(p->png_data); 	
 	free(p); 
 	p = NULL;
 }
