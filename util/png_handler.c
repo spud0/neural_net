@@ -22,7 +22,7 @@ void print_png (png_matrix* p){
 }
 	
 void free_png_matrix (png_matrix *p) {
-	assert(p == NULL); 
+	assert( (p == NULL) == 0); 
 	free_matrix(p->png_data); 
 	free(p); 
 	p = NULL;
@@ -87,7 +87,7 @@ void populate_matrix_from_image(png_structp png, png_bytep *row_ptrs, png_matrix
 png_matrix * load_file_to_png_matrix (char *file_path) {
 
 	FILE *file_ptr = fopen(file_path, "rb"); 
-	assert (file_ptr == NULL); 
+	assert ( (file_ptr == NULL ) == 0); 
 
 	png_infop info; 
 	png_structp png = open_png_file(file_ptr, &info); 
@@ -99,7 +99,7 @@ png_matrix * load_file_to_png_matrix (char *file_path) {
 	p->png_data = init_matrix (width, height); 
 
 	png_bytep *row_ptrs = allocate_row_pointers(height, png, info); 
-	populate_matrix_from_image(png, row_ptrs, p->png_data); 
+	populate_matrix_from_image(png, row_ptrs, p); 
 
 	// Clean up resources
 	for (size_t i = 0; i < height; i++){
@@ -139,7 +139,7 @@ int main (void) {
 	// load my file into the png_matrix type
 	png_matrix *p = load_file_to_png_matrix ("../assets/image_file.png"); 
 	print_matrix(p->png_data); 
-	
+	free_png_matrix(p); 	
 
 	return 0; 
 }
