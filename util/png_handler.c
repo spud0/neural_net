@@ -4,6 +4,7 @@
 #include <png.h>
 
 #include "png_handler.h"
+#include "../matrix/matrix.h"
 
 // Unsure about approach
 int get_label_from_dir(const char *dir_name ) {
@@ -83,30 +84,42 @@ void populate_matrix_from_image(png_structp png, png_bytep *row_ptrs, png_matrix
 	}
 }
 
-#if 0
-/*
-png_matrix * load_png_to_matrix (char *file_path) {
+png_matrix * load_file_to_png_matrix (char *file_path) {
 
 	FILE *file_ptr = fopen(file_path); 
 	assert (file_ptr == NULL); 
 
 	png_infop info; 
 	png_structp png = open_png_file(file_ptr, &info); 
-	
-	png_matrix *p = (png_matrix *) malloc (sizeof(png_matrix));	
-	p->png_data = init_matrix (
-			png_get_image_width(png, info), 
-			png_get_image_height(png, info)		
-	); 
-	
 
+	int width = png_get_image_width(png, info);
+	int height = png_get_image_height(png, info); 
+
+	png_matrix *p = (png_matrix *) malloc (sizeof(png_matrix));	
+	p->png_data = init_matrix (width, height); 
+
+	png_bytep *row_ptrs = allocate_row_pointers(height, png, info); 
+	read_image_into_matrix(png, row_ptrs, p->png_data); 
+
+	// Clean up resources
+	for (size_t i = 0; i < height; i++){
+		free(row_ptrs[i]); 
+	}
+
+	free(row_ptrs); 
+	fclose(file_ptr); 
+	png_destroy_read_struct(&png, &info, NULL); 
+	
+	#if 0
 	// Split the full file path by the '/' char and take the number part... 
-	//p->label = get_label_from_dir(...); 
+	p->label = get_label_from_dir(...); 
+	# endif 
 
 	return p; 
 }
-*/
 
+
+#if 0
 void write_png_to_file(const char *file_path, png_matrix *p){
 
 	FILE * file_ptr = fopen(file_path, "a"); 
@@ -118,14 +131,16 @@ void write_png_to_file(const char *file_path, png_matrix *p){
 			fprintf(file_ptr, ... );  
 		}
 	}
-
-
 }
 #endif
 
-
 int main (void) {
-	printf("hello, world\n"); 
+
+	// load my file into the png_matrix type
+	png_matrix *p = load_file_to_png_matrix ("../assets/image_file.png"); 
+	print_matrix(p->png_data); 
+	
+
 	return 0; 
 }
 
