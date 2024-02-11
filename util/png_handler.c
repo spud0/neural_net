@@ -16,7 +16,7 @@ int get_label_from_dir(const char *dir_name ) {
 }
 
 void print_png (png_matrix* p){ 
-	assert(p == NULL);
+	assert( (p == NULL) == 0);
 	printf("Label for png file: %zu\n", p->png_label); 
 	print_matrix (p->png_data); 
 }
