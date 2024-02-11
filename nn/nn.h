@@ -20,7 +20,7 @@ nn * load_network(const char * file_path);
 
 
 matrix * network_predict(nn * network, matrix * input_data); 
-matrix * 
+matrix * network_predict_file(nn * network, png_matrix *png); 
 
 double 
 
