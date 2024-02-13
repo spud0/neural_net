@@ -57,6 +57,19 @@ matrix * copy_matrix (matrix *m){
 	return res; 	
 }
 
+matrix *apply_func_to_matrix (double (*f)(double), matrix * m){
+	
+	matrix * res = copy_matrix(m); 
+
+	for (size_t i = 0; i < m->rows; i++){
+		for (size_t j = 0; j < m->cols; j++){
+				res->entries[i][j] = f(m->entries[i][j]); 
+		}
+	}
+	
+	return res; 
+}
+
 void write_matrix_to_file(matrix *m, const char * file_path){
 	FILE * file_ptr = fopen(file_path, "wb"); 
 	fprintf(file_ptr, "%d\n", m->cols);	
