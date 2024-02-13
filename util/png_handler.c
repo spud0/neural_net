@@ -119,20 +119,23 @@ png_matrix * load_file_to_png_matrix (char *file_path) {
 }
 
 
-#if 0
+
 void write_png_to_file(const char *file_path, png_matrix *p){
 
 	FILE * file_ptr = fopen(file_path, "a"); 
+	fprintf(file_ptr, "%d\n",p->png_data->rows); 
+	fprintf(file_ptr, "%d\n",p->png_data->cols);
 	
 	for (size_t i = 0; i < p->png_data->cols; i++){
 		for (size_t j = 0; j < p->png_data->rows; j++) {
-			fprintf(file_ptr, file_path); 
-			// TODO: Figure out if I want a string here
-			fprintf(file_ptr, ... );  
+			fprintf(file_ptr,"%.5f",p->png_data->entries[i][j]); 
 		}
 	}
+
+	printf("Wrote PNG bytes to file: %s", file_path); 
+	fclose(file_ptr); 
 }
-#endif
+
 
 int main (void) {
 
