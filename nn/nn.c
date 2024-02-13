@@ -56,3 +56,10 @@ void free_network (nn * network){
 	network = NULL
 	return; 
 }
+
+
+matrix * network_predict(nn * network, matrix * input_data){
+	matrix * hidden_inps = dot_product(network->hidden_weights, input_data); 
+	matrix * hidden_outps =  	
+	return prediction; 
+}
