@@ -56,6 +56,21 @@ matrix * copy_matrix (matrix *m){
 
 	return res; 	
 }
+
+void write_matrix_to_file(matrix *m, const char * file_path){
+	FILE * file_ptr = fopen(file_path, "wb"); 
+	fprintf(file_ptr, "%d\n", m->cols);	
+	fprintf(file_ptr, "%d\n", m->rows);
+
+	for (size_t i = 0; i < m->rows; i++){
+		for (size_t j = 0; j < m->cols; j++) {
+			fprintf(file_ptr, "%.5f\n", m->entries[i][j]); 
+		}
+	}
+
+	printf("Wrote matrix to file: %s", file_path);	
+	fclose(file_ptr); 
+}	
 	
 matrix * flatten_matrix (matrix *m, int axis) {
 
