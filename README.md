@@ -6,6 +6,11 @@ A neuron is the simplest piece of a neural network. Add some of these neurons to
 
 ## Run it! 
 ``` 
+git clone https://github.com/spud0/neural_net
+...
+```
+If you're using containers (Docker), it can be run like this. 
+```
 ...
 ```
 
@@ -16,4 +21,6 @@ I saw a YouTube video on building a neural network from scratch in C. I also saw
 ## Links: 
 Kaggle Dataset
 	-  [kaggle](https://kaggle.com/datasets/jidhumohan/mnist-png/data)
+Neural Networks Visualized
+	- []()
 
