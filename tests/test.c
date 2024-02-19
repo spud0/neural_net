@@ -1,5 +1,6 @@
 #include "../matrix/matrix.h"
 #include "../matrix/matrix_ops.h"
+#include "../util/png_handler.h"
 
 #include <stdio.h>
 #include <stdlib.h>
