@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h>
+#include <assert.h>
 
 #include "nn.h"
 #include "activation.h"
@@ -32,13 +33,12 @@ nn * init_network(int input, int hidden, int output, double learning_rate){
 	return network; 
 }
 
-
-
+// Print information about the Neural Network
 void print_network(nn * network){
 	
 	printf("Number of inputs: %d\n", network->input); 	
 	printf("Number of outputs: %d\n", network->output); 
-	printf("The learning rate: %d\n", network->learning_rate); 
+	printf("The learning rate: %f\n", network->learning_rate); 
 
 	// The weights	
 	printf("The hidden weights"); 	
@@ -53,13 +53,14 @@ void free_network (nn * network){
 	free_matrix(network->hidden_weights);
 	free_matrix(network->output_weights);
 	free(network); 
-	network = NULL
+	network = NULL;
 	return; 
 }
 
 
 matrix * network_predict(nn * network, matrix * input_data){
 	matrix * hidden_inps = dot_product(network->hidden_weights, input_data); 
-	matrix * hidden_outps =  	
+	matrix * hidden_outps =  (matrix *) TODO;
+	matrix * prediction = hidden_outps;
 	return prediction; 
 }
