@@ -1,6 +1,8 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#define TODO 1337
+
 // Matrix Structure
 typedef struct matrix {
 	int rows;

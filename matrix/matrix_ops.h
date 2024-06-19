@@ -3,7 +3,7 @@
 #include "matrix.h"
 
 // Matrix operations
-matrix * dot_prodcut (matrix *m); 
+matrix * dot_product (matrix *m_one, matrix *m_two); 
 matrix * add (matrix *m_one, matrix *m_two);
 matrix * subtract (matrix *m_one, matrix *m_two); 
 matrix * transpose (matrix *m); 
